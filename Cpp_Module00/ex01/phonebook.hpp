@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:50 by anmassy           #+#    #+#             */
-/*   Updated: 2023/11/26 15:02:05 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/07 12:09:18 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ class directory {
     public:
         directory(void);
         ~directory(void);
-        void    add_contact(int index);
-        void    search_contact(int index);
+        int    add_contact(int index, int aff);
+        void    search_contact(int index, int aff);
                 
     private:
         profil _contact[9];

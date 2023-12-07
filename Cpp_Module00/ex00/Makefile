@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/11/29 13:54:26 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/07 11:32:20 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ END = \033[0m
 
 all : $(NAME)
 
-$(NAME):
+$(NAME): Makefile
 	@$(CC) $(CFLAGS) megaphone.cpp -o $(NAME)
 	@echo "$(CURSIVE)-Compile with : $(CFLAGS).$(END)"
 	@echo "$(CURSIVE)-Executable is ready.$(END)"

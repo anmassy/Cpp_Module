@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:12 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/04 19:00:15 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/07 18:49:05 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,22 @@ profil::profil(void) {
 profil::~profil(void) {
     
 }
-std::string profil::verif_input(std::string msg) { //ici invalid input
+
+std::string profil::verif_input(std::string msg) {
     
     std::string input = "";
     int valid = 0;
-    int T = 1;
 
     std::cout << msg;
     while (valid == 0) {
-        getline(std::cin, input);
-        if (T == 1 && msg == "Enter your first name : ") {
-            T = 0;
-        }
-        else if (input == "") {
+        std::getline(std::cin, input);
+        if (input != "")
+            valid = 1;
+        else {
             std::cin.clear();
             std::cout << "invalid input" << std::endl;
             std::cout << msg;
-
         }
-        else  
-            valid = 1;
     }
     return (input);
 }
@@ -88,10 +84,14 @@ void    profil::lst_contact(int index) {
 
 void    profil::display(void) {
     
-    std::cout << "---------------CONTACT----------------" << std::endl;
-    std::cout << this->_first_name << std::endl;
-    std::cout << this->_last_name << std::endl;
-    std::cout << this->_nickname << std::endl;
-    std::cout << this->_phone_number << std::endl;
-    std::cout << this->_darkest_secret << std::endl;
+    std::cout << std::endl;
+    std::cout << "╔════════════════════════════════════╗" << std::endl;
+    std::cout << "║             CONTACT" << std::endl;
+    std::cout << "║ First name: " << this->_first_name << std::endl;
+    std::cout << "║ Last name: " << this->_last_name << std::endl;
+    std::cout << "║ Nickname: " << this->_nickname << std::endl;
+    std::cout << "║ Phone number: " << this->_phone_number << std::endl;
+    std::cout << "║ Darkest secret: " << this->_darkest_secret << std::endl;
+    std::cout << "╚════════════════════════════════════╝" << std::endl;
+
 }
