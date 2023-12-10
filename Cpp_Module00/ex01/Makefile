@@ -6,14 +6,14 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/11/25 15:59:35 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/10 20:24:08 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = phonebook
+NAME = PhoneBook
 
-SRCS =	contact.cpp \
-		phonebook.cpp
+SRCS =	Contact.cpp \
+		PhoneBook.cpp
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:08 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/07 18:46:37 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/10 20:26:50 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 #include <cstdlib>
 
-directory::directory(void) {
+PhoneBook::PhoneBook(void) {
     
     std::cout << std::endl;
     std::cout << "╔══════════════════════════════════╗" << std::endl;
-    std::cout << "║    Welcome to your phonebook !   ║" << std::endl;
+    std::cout << "║    Welcome to your PhoneBook !   ║" << std::endl;
     std::cout << "║                                  ║" << std::endl;
     std::cout << "║ ADD    : To add a contact.       ║" << std::endl;
     std::cout << "║ SEARCH : for search a contact.   ║" << std::endl;
@@ -27,11 +27,11 @@ directory::directory(void) {
     std::cout << std::endl;
 }
 
-directory::~directory(void) {
+PhoneBook::~PhoneBook(void) {
     
 }
 
-int   directory::add_contact(int index, int aff) {
+int   PhoneBook::add_contact(int index, int aff) {
 
     std::string choice;
    
@@ -59,7 +59,7 @@ int   directory::add_contact(int index, int aff) {
     return (index);
 }
 
-void    directory::search_contact(int index, int aff) {
+void    PhoneBook::search_contact(int index, int aff) {
 
     int i = 0;
     std::string input;
@@ -94,7 +94,7 @@ void    directory::search_contact(int index, int aff) {
 
 int main() {
 
-    directory   book;
+    PhoneBook   book;
     std::string input = "";
     static int index = 1;
     static int aff = 1;
@@ -109,7 +109,7 @@ int main() {
         }
         else if (!input.compare("SEARCH"))
             book.search_contact(index, aff);
-        else if (std::cin.eof())
+        else if (std::cin.eof()) /*ca a gerer*/
             break ;
         std::cout << ">";
         std::getline(std::cin, input);

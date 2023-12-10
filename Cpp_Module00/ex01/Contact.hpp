@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:32:33 by anmassy           #+#    #+#             */
-/*   Updated: 2023/11/26 15:08:46 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/10 20:22:13 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 # include <iostream>
 
-class profil {
+class Contact {
     public:
-        profil(void);
-        ~profil(void);
+        Contact(void);
+        ~Contact(void);
         std::string    verif_input(std::string msg);
         void    init_user(void);
         void    lst_contact(int index); 

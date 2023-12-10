@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:50 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/07 12:09:18 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/10 20:24:48 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
-class directory {
+class PhoneBook {
     public:
-        directory(void);
-        ~directory(void);
+        PhoneBook(void);
+        ~PhoneBook(void);
         int    add_contact(int index, int aff);
         void    search_contact(int index, int aff);
                 
     private:
-        profil _contact[9];
+        Contact _contact[9];
         
 };
 

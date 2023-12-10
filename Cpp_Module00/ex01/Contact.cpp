@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   contact.cpp                                        :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:12 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/07 18:49:05 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/10 20:23:17 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "contact.hpp"
+#include "Contact.hpp"
 
-profil::profil(void) {
+Contact::Contact(void) {
 
 }
 
-profil::~profil(void) {
+Contact::~Contact(void) {
     
 }
 
-std::string profil::verif_input(std::string msg) {
+std::string Contact::verif_input(std::string msg) {
     
     std::string input = "";
     int valid = 0;
@@ -40,7 +40,7 @@ std::string profil::verif_input(std::string msg) {
     return (input);
 }
 
-void    profil::init_user(void) {
+void    Contact::init_user(void) {
 
     this->_first_name = verif_input("Enter your first name : ");
     this->_last_name = verif_input("Enter your last name : ");
@@ -49,7 +49,7 @@ void    profil::init_user(void) {
     this->_darkest_secret = verif_input("Enter your darkest secret : ");
 }
 
-std::string   profil::space(int n) {
+std::string   Contact::space(int n) {
 
     std::string temp;
     
@@ -58,7 +58,7 @@ std::string   profil::space(int n) {
     return (temp);
 }
 
-std::string    profil::too_long(std::string val)
+std::string    Contact::too_long(std::string val)
 {
     if (val.size() > 10) {
         val.resize(10);
@@ -67,7 +67,7 @@ std::string    profil::too_long(std::string val)
     return (val);
 }
 
-void    profil::lst_contact(int index) {
+void    Contact::lst_contact(int index) {
     
     std::string info;
 
@@ -82,7 +82,7 @@ void    profil::lst_contact(int index) {
     std::cout <<  "|" << "║" << std::endl;
 }
 
-void    profil::display(void) {
+void    Contact::display(void) {
     
     std::cout << std::endl;
     std::cout << "╔════════════════════════════════════╗" << std::endl;
