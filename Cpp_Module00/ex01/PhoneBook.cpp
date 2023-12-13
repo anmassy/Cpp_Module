@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:08 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/10 20:26:50 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:03:18 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,15 @@ int   PhoneBook::add_contact(int index, int aff) {
 
     std::string choice;
    
+   if (std::cin.eof())
+            return (-1) ;
     if (aff > 8) {
         std::cout << "╔══════════════════════════════════════════════════════╗" << std::endl;
         std::cout << "║ Warning: if you continue, you will delete a contact. ║" << std::endl;
         while (choice != "yes" || choice != "no") {
             std::cout << "║ yes to continue, no to stop !                        ║" << std::endl; 
             std::cout << "╚══════════════════════════════════════════════════════╝" << std::endl;
-            std::cin >> choice;
+            std::getline(std::cin, choice);
             if (choice == "no")
                 return (index);
             else if (choice == "yes") {
@@ -50,7 +52,8 @@ int   PhoneBook::add_contact(int index, int aff) {
             }
             if (choice != "yes" || choice != "no") {
                 std::cin.clear();
-                std::cout << "invalid input" << std::endl;
+                std::cout << "╔══════════════════════════════════════════════════════╗" << std::endl;
+                std::cout << "║ invalid input                                        ║" << std::endl;
             }
         }
     }
@@ -78,6 +81,8 @@ void    PhoneBook::search_contact(int index, int aff) {
     while (valid == 0) {
         std::cout << "Please enter a contact number: ";
         std::cin >> input;
+        if (std::cin.eof())
+            break ;
         i = atoi(input.c_str());
         if (i >= 1 && i <= aff - 1) {
             this->_contact[i].display();
@@ -109,7 +114,7 @@ int main() {
         }
         else if (!input.compare("SEARCH"))
             book.search_contact(index, aff);
-        else if (std::cin.eof()) /*ca a gerer*/
+        if (std::cin.eof())
             break ;
         std::cout << ">";
         std::getline(std::cin, input);

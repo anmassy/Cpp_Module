@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 17:24:12 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/10 20:23:17 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:01:24 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ std::string Contact::verif_input(std::string msg) {
     std::cout << msg;
     while (valid == 0) {
         std::getline(std::cin, input);
+        if (std::cin.eof())
+            break ;
         if (input != "")
             valid = 1;
         else {
@@ -42,11 +44,16 @@ std::string Contact::verif_input(std::string msg) {
 
 void    Contact::init_user(void) {
 
-    this->_first_name = verif_input("Enter your first name : ");
-    this->_last_name = verif_input("Enter your last name : ");
-    this->_nickname = verif_input("Enter your nickname : ");
-    this->_phone_number = verif_input("Enter your phone number : ");
-    this->_darkest_secret = verif_input("Enter your darkest secret : ");
+    if (!std::cin.eof())
+        this->_first_name = verif_input("Enter your first name : ");
+    if (!std::cin.eof())
+        this->_last_name = verif_input("Enter your last name : ");
+    if (!std::cin.eof())
+        this->_nickname = verif_input("Enter your nickname : ");
+    if (!std::cin.eof())
+        this->_phone_number = verif_input("Enter your phone number : ");
+    if (!std::cin.eof())
+        this->_darkest_secret = verif_input("Enter your darkest secret : ");
 }
 
 std::string   Contact::space(int n) {
