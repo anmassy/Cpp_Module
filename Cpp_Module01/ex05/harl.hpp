@@ -1,27 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   replace.hpp                                        :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 11:10:32 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/14 12:17:50 by anmassy          ###   ########.fr       */
+/*   Created: 2023/12/14 12:46:33 by anmassy           #+#    #+#             */
+/*   Updated: 2023/12/14 13:25:47 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef REPLACE_HPP
-#define REPLACE_HPP
+#ifndef HARL_HPP
+#define HARL_HPP
 
-#include <string.h>
 #include <iostream>
-#include <fstream>
 
-class replace {
+class harl {
+
+	private :
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	
 	public :
-		replace();
-		~replace(void);
-		std::string copy_paste(std::string filename, std::string s1, std::string s2);
+		harl(void);
+		~harl(void);
+		
+		void	complain(std::string level);
 };
+
+typedef void (harl::*t_fonc)(void);
 
 #endif

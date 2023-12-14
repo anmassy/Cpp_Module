@@ -6,14 +6,14 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/12/14 12:15:40 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/14 13:33:33 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = replace
+NAME = harl
 
 SRCS =	main.cpp \
-		replace.cpp \
+		harl.cpp \
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
