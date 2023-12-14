@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/14 13:12:20 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/14 13:14:00 by anmassy          ###   ########.fr       */
+/*   Created: 2023/12/14 12:46:33 by anmassy           #+#    #+#             */
+/*   Updated: 2023/12/14 13:25:47 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "harl.hpp"
+#ifndef HARL_HPP
+#define HARL_HPP
 
-int main(int ac, char **av) {
+#include <iostream>
 
-	if (ac != 2) {
-		std::cout << "incorrect number of arguments" << std::endl;
-		return (0);
-	}
-	harl sign;
-	sign.complain(av[1]);
-	return (0);
-}	
+class harl {
+
+	private :
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
+	
+	public :
+		harl(void);
+		~harl(void);
+		
+		void	complain(std::string level);
+};
+
+typedef void (harl::*t_fonc)(void);
+
+#endif
