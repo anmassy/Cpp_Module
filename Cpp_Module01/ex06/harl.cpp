@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 12:49:37 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/14 13:41:10 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/15 17:32:34 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,22 +22,17 @@ harl::~harl(void) {
 
 void	harl::debug(void) {
 	
-	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple \
-	-pickle-special-ketchup burger. I really do !" << std::endl;
+	std::cout << "I love having extra bacon for my 7XL-double-cheese-triple-pickle-special-ketchup burger. I really do !" << std::endl;
 }
 
 void	harl::info(void) {
 
-	std::cout << "I cannot believe adding extra bacon costs more money. \
-	You didn't put enough bacon in my burger ! If you did, I wouldn't be \
-	asking for more !" << std::endl;
+	std::cout << "I cannot believe adding extra bacon costs more money. You didn't put enough bacon in my burger ! If you did, I wouldn't be asking for more !" << std::endl;
 }
 
 void	harl::warning(void) {
 
-	std::cout << "I think I deserve to have some extra bacon for free.\
-	I've been coming for years whereas you started working here since \
-	last month." << std::endl;
+	std::cout << "I think I deserve to have some extra bacon for free.I've been coming for years whereas you started working here since last month." << std::endl;
 }
 
 void	harl::error(void) {
@@ -46,14 +41,22 @@ void	harl::error(void) {
 }
 
 void	harl::complain(std::string level) {
-	t_fonc fonc[] = {&harl::debug, &harl::info, &harl::warning, &harl::error};
-	std::string word[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	int i = -1;
-	while (++i < 4) {
-		if (!word[i].compare(level)) {
-			(this->*fonc[i])();
-			return ;
-		}
+	// t_fonc fonc[] = {&harl::debug, &harl::info, &harl::warning, &harl::error};
+	std::string word[] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
+	while (i < 4 && !word[i].compare(level))
+		i++;
+	switch (i) {
+	case 0:
+		this->debug();
+	case 1:
+		this->info();
+	case 2:
+		this->warning();
+	case 3:
+		this->error();
+		break ;
+	default:
+			std::cout << "incorrect argument" << std::endl;
 	}
-	std::cout << "incorrect argument" << std::endl;
 }
