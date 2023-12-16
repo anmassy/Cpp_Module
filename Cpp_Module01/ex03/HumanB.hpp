@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:51:06 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/12 18:53:18 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:56:59 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,13 @@
 class HumanB {
 
     private :
-        Weapon* _Weapon;
         std::string _name;
+        Weapon* _Weapon;
     public :
         HumanB(std::string name);
         ~HumanB(void);
         void    attack(void);
+        void	setWeapon(Weapon& weapon);
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:39:31 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/12 18:55:16 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/16 11:56:50 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 class HumanA {
 
     private :
-        Weapon& _Weapon;
         std::string _name;
+        Weapon& _Weapon;
     public :
         HumanA(std::string name, Weapon &Weapon);
         ~HumanA(void);

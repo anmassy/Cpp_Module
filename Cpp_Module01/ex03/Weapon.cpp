@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/12 18:35:47 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/16 11:47:03 by anmassy          ###   ########.fr       */
+/*   Created: 2023/12/16 10:55:35 by anmassy           #+#    #+#             */
+/*   Updated: 2023/12/16 11:46:44 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP 
+#include "Weapon.hpp"
 
-#include <iostream>
+Weapon::Weapon(std::string type) {
+	
+	this->setType(type);
+}
 
-class Weapon {
+Weapon::~Weapon(void) {
+	
+}
 
-    private :
-        std::string _type;
-    public :
-        Weapon(std::string type);
-        ~Weapon(void);
-        std::string& getType(void);
-        void    setType(std::string type);
-};
+std::string&	Weapon::getType(void) {
+	
+	return (this->_type);
+}
 
-#endif
+void    Weapon::setType(std::string type) {
+	
+	this->_type = type;
+}
