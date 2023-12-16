@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 19:07:25 by anmassy           #+#    #+#             */
-/*   Updated: 2023/11/29 11:24:14 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/16 10:44:17 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,6 @@ int main(void) {
     int i = 0;
     while (i < N)
         createZomb[i++].announce();
+    delete [] createZomb;
+    return (0);
 }

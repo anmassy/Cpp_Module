@@ -6,11 +6,11 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/12/14 13:33:33 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/16 11:58:49 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = harl
+NAME = ex06
 
 SRCS =	main.cpp \
 		harl.cpp \

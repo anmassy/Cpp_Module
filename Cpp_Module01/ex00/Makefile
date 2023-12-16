@@ -6,11 +6,11 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/11/29 11:04:47 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/16 11:58:19 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Zombie
+NAME = ex00
 
 SRCS =	main.cpp \
 		newZombie.cpp \

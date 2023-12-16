@@ -6,14 +6,14 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/11/29 13:37:48 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/16 11:58:27 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Zombie
+NAME = ex01
 
 SRCS =	main.cpp \
-		ZombieHorde.cpp \
+		zombieHorde.cpp \
 		Zombie.cpp
 
 CC = c++

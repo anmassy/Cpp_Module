@@ -6,11 +6,11 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 10:48:53 by anmassy           #+#    #+#              #
-#    Updated: 2023/12/14 12:15:40 by anmassy          ###   ########.fr        #
+#    Updated: 2023/12/16 11:57:55 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = replace
+NAME = ex04
 
 SRCS =	main.cpp \
 		replace.cpp \
