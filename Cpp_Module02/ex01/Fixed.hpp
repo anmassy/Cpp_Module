@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:27:56 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/18 11:35:02 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:28:04 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,17 @@ class Fixed {
 	public :
 		Fixed(void);
 		Fixed(const Fixed &copy);
+		Fixed (int const const_int);//added
+		Fixed (float const const_flaot);//added
 		~Fixed(void);
 		
 		Fixed &	operator=(Fixed const & rhs);
 
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
+		
+		int toInt( void ) const;//added
+		float toFloat( void ) const;//added
+
+		Fixed & operator<<(Fixed const & rhs);//added
 };
