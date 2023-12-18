@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 10:51:30 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/16 11:53:56 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/18 10:23:48 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ HumanB::HumanB(std::string name) : _name(name) {
 }
 
 HumanB::~HumanB(void) {
-    
+
 }
 
 void	HumanB::setWeapon(Weapon& weapon) {

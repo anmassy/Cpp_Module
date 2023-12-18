@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:27:56 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/16 14:26:33 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:35:02 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ class Fixed {
 		Fixed(void);
 		Fixed(const Fixed &copy);
 		~Fixed(void);
-/*Une surcharge de l’opérateur d’affectation.*/
+		
+		Fixed &	operator=(Fixed const & rhs);
 
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);

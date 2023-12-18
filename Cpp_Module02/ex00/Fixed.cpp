@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 14:25:37 by anmassy           #+#    #+#             */
-/*   Updated: 2023/12/16 14:25:44 by anmassy          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:42:01 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,12 @@ Fixed::Fixed(const Fixed &copy) {
 	*this = copy;
 }
 
-/*Une surcharge de l’opérateur d’affectation.*/
+Fixed &	Fixed::operator=(Fixed const & rhs) {
+
+	std::cout << "Copy assignment operator called" << std::endl;
+	this->_value = rhs.getRawBits();
+	return (*this);
+}
 
 Fixed::~Fixed(void) {
 
