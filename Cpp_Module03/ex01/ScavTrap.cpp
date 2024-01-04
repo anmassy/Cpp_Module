@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Scavtrap.cpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 11:48:57 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/04 12:01:57 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/04 12:05:24 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Scavtrap.hpp"
+#include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
     this->_hitpoints = 100;
