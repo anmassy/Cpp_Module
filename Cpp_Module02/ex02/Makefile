@@ -6,11 +6,11 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 11:40:42 by anmassy           #+#    #+#              #
-#    Updated: 2024/01/01 16:16:49 by anmassy          ###   ########.fr        #
+#    Updated: 2024/01/01 16:28:10 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRCS =	main.cpp \
 		Fixed.cpp \

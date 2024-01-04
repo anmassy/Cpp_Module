@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/16 13:27:56 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/02 13:15:28 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/03 14:30:28 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Fixed {
 	
 	public :
 		Fixed(void);
-		Fixed (const int n);//added
-		Fixed (const float n);//added
+		Fixed (const int n);
+		Fixed (const float n);
 		Fixed(const Fixed &copy);
 		Fixed&	operator=(Fixed const & rhs);
 		~Fixed(void);
@@ -33,8 +33,30 @@ class Fixed {
 		int	getRawBits(void) const;
 		void setRawBits(int const raw);
 		
-		int toInt( void ) const;//added
-		float toFloat( void ) const;//added
+		int toInt( void ) const;
+		float toFloat( void ) const;
+
+		bool operator>(const Fixed &rhs) const;
+		bool operator<(const Fixed &rhs) const;
+		bool operator>=(const Fixed &rhs) const;
+		bool operator<=(const Fixed &rhs) const;
+		bool operator==(const Fixed &rhs) const;
+		bool operator!=(const Fixed &rhs) const;
+
+		Fixed   operator+( const Fixed &rhs ) const ;
+    	Fixed   operator-( const Fixed &rhs ) const ;
+    	Fixed   operator*( const Fixed &rhs ) const ;
+    	Fixed   operator/( const Fixed &rhs ) const ;
+	
+    	Fixed&  operator++( void );
+    	Fixed   operator++( int );
+    	Fixed&  operator--( void );
+    	Fixed   operator--( int );
+
+		static Fixed& min( Fixed &a, Fixed &b );
+		static const Fixed& min( const Fixed &a, const Fixed &b );
+		static Fixed& max( Fixed &a, Fixed &b );
+		static const Fixed& max( const Fixed &a, const Fixed &b );
 
 };
 

@@ -1,43 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   Point.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/16 13:27:56 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/02 13:15:28 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/03 15:24:19 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/03 17:07:54 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
+#ifndef POINT_HPP
+#define POINT_HPP
 
 #include <iostream>
 #include <cmath>
+#include "Fixed.hpp"
 
-class Fixed {
+class Point {
 
 	private :
-		int _value;
-		static const int _fract = 8;
+		const Fixed _x;
+                const Fixed _y;
 	
 	public :
-		Fixed(void);
-		Fixed (const int n);//added
-		Fixed (const float n);//added
-		Fixed(const Fixed &copy);
-		Fixed&	operator=(Fixed const & rhs);
-		~Fixed(void);
-		
-		int	getRawBits(void) const;
-		void setRawBits(int const raw);
-		
-		int toInt( void ) const;//added
-		float toFloat( void ) const;//added
+                Point();
+                Point(const float x, const float y);
+                Point(const Point &src);
+                ~Point();
+
+                Point&  operator=(const Point &rhs);
+
+                Fixed getX(void) const ;
+                Fixed getY(void) const ;
 
 };
 
-std::ostream & operator<<(std::ostream & o, Fixed const & rhs);//added
+bool bsp( Point const a, Point const b, Point const c, Point const p );
 
 #endif
