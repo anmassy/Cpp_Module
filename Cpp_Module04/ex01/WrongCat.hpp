@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:23:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:32 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/08 11:32:06 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/08 12:22:44 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-Dog::Dog(void) : Animal("Dog") {
-    std::cout << this->_type << " has been create!" << std::endl;
-}
+#include <iostream>
+#include "WrongAnimal.hpp"
 
-Dog::~Dog(void)
-{
-    std::cout << this->_type << " has been destroy!" << std::endl;
-}
+class WrongCat : public WrongAnimal {
+    public :
+       WrongCat();
+       ~WrongCat();
 
-void    Dog::makeSound(void) const{
-    std::cout << "Ouaf Ouaf!" << std::endl;
-}
+       void makeSound(void) const;
+};
+
+#endif

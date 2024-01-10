@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:23:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:32 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/07 15:54:02 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/10 18:57:02 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef CAT_HPP
+#define CAT_HPP
 
-Dog::Dog(void) : Animal("Dog") {
-    std::cout << this->_type << " has been create!" << std::endl;
-}
+#include <iostream>
+#include "Animal.hpp"
 
-Dog::~Dog(void)
-{
-    std::cout << this->_type << " has been destroy!" << std::endl;
-}
+class Cat : public Animal {
+    private :
+        Brain   *_brain;
+        
+    public :
+        Cat();
+        Cat(const Cat &copy);
+        ~Cat();
+        
+        Cat& operator=(const Cat &rhs);
 
-void    Dog::makeSound(void) const{
-    std::cout << "Ouaf Ouaf!" << std::endl;
-}
+        void makeSound(void) const;
+};
+
+#endif

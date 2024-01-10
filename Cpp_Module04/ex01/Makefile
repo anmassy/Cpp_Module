@@ -6,7 +6,7 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 11:40:42 by anmassy           #+#    #+#              #
-#    Updated: 2024/01/08 11:59:27 by anmassy          ###   ########.fr        #
+#    Updated: 2024/01/10 18:48:27 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS =	main.cpp \
 		Cat.cpp \
 		WrongAnimal.cpp \
 		WrongCat.cpp \
+		Brain.cpp \
 		
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

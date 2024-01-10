@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:23:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:32 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/08 11:19:37 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/10 18:56:30 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog(void) : Animal("Dog") {
+Cat::Cat(void) : Animal("Cat") {
     std::cout << this->_type << " has been create!" << std::endl;
+    this->_brain = new Brain();
 }
 
-Dog::~Dog(void)
+Cat::Cat(const Cat &copy) {
+    *this = copy;
+}
+
+Cat::~Cat(void)
 {
     std::cout << this->_type << " has been destroy!" << std::endl;
+    delete  this->_brain;
 }
 
-void    Dog::makeSound(void) const{
-    std::cout << "Ouaf Ouaf!" << std::endl;
+Cat& Cat::operator=(const Cat &rhs) {
+    if (this != &rhs) {
+        this->_type = rhs._type;
+        this->_brain = new Brain(*rhs._brain);
+    }
+    return (*this);
+}
+
+void    Cat::makeSound(void) const{
+    std::cout << "Meow!" << std::endl;
 }

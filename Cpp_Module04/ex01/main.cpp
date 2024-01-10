@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:23:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:32 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/07 15:46:31 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/10 18:44:48 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Animal.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+#include "Cat.hpp"
 #include "Dog.hpp"
 
-Dog::Dog(void) : Animal("Dog") {
-    std::cout << this->_type << " has been create!" << std::endl;
-}
-
-Dog::~Dog(void)
+int main( void )
 {
-    std::cout << this->_type << " has been destroy!" << std::endl;
-}
+    const Animal* j = new Dog();
+    const Animal* i = new Cat();
 
-void    Dog::makeSound(void) const{
-    std::cout << "Ouaf Ouaf!" << std::endl;
+    delete j;
+    delete i;
+
+    Dog basic;
+    {
+        Dog tmp = basic;
+    }
+
+    const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+    for (int i = 0; i < 4; i++) {
+        delete animals[i];
+    }
+
+    return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:54:02 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 11:01:33 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/08 12:22:38 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Cat : public Animal {
        Cat();
        ~Cat();
 
-       void makesound();
+       void makeSound(void) const;
 };
 
 #endif

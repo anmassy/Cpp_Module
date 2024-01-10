@@ -1,26 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:23:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:32 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/10 18:03:23 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/10 18:06:35 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-Dog::Dog(void) : Animal("Dog") {
-    std::cout << this->_type << " has been create!" << std::endl;
-}
+#include <iostream>
 
-Dog::~Dog(void)
-{
-    std::cout << this->_type << " has been destroy!" << std::endl;
-}
+class Brain {
+  
+  private :
+    std::string _ideas[100];
+    
+  public :
+    Brain();
+    Brain(const Brain &copy);
+    ~Brain();
 
-void    Dog::makeSound(void) const{
-    std::cout << "Ouaf Ouaf!" << std::endl;
-}
+    Brain &operator=(Brain const &rhs);
+};
+
+#endif
