@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:32:12 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/11 10:52:48 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/07 15:48:15 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/11 10:54:40 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
 #include <iostream>
+#include "Brain.hpp"
 
-class WrongAnimal {
-  
+class Animal {
 	protected :
 		std::string _type;
 	
 	public :
-		WrongAnimal();
-		WrongAnimal(std::string type);
-		WrongAnimal(const WrongAnimal &copy);
-		~WrongAnimal();
+		Animal();
+		Animal(std::string type);
+		Animal(const Animal &copy);
+		virtual ~Animal();
 
-		WrongAnimal    &operator=(WrongAnimal const &rhs); 
+		Animal	&operator=(Animal const &rhs); 
 
-		void    makeSound(void) const;
+		virtual void	makeSound(void) const = 0; /*righ now its a abstrait class*/
 		std::string getType() const;
 };
 

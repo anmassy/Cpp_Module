@@ -1,35 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:32:12 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/11 10:52:48 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/07 15:46:31 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/11 10:54:08 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#include "Animal.hpp"
+#include "WrongAnimal.hpp"
+#include "WrongCat.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
-#include <iostream>
+int main( void )
+{
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-class WrongAnimal {
-  
-	protected :
-		std::string _type;
-	
-	public :
-		WrongAnimal();
-		WrongAnimal(std::string type);
-		WrongAnimal(const WrongAnimal &copy);
-		~WrongAnimal();
+	delete j;
+	delete i;
 
-		WrongAnimal    &operator=(WrongAnimal const &rhs); 
+	Dog basic;
+	{
+		Dog tmp = basic;
+	}
 
-		void    makeSound(void) const;
-		std::string getType() const;
-};
+	const Animal* animals[4] = { new Dog(), new Dog(), new Cat(), new Cat() };
+	for (int i = 0; i < 4; i++) {
+		delete animals[i];
+	}
 
-#endif
+	return 0;
+}

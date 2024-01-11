@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 16:20:03 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:27 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:53:13 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "Animal.hpp"
 
 class Dog : public Animal {
-    public :
-        Dog();
-        ~Dog();
+	public :
+		Dog();
+		~Dog();
 
-        void makeSound(void) const;
+		void makeSound(void) const;
 };
 
 #endif

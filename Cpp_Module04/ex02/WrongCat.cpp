@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongAnimal.hpp                                    :+:      :+:    :+:   */
+/*   WrongCat.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:32:12 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/11 10:52:48 by anmassy          ###   ########.fr       */
+/*   Created: 2024/01/08 11:32:09 by anmassy           #+#    #+#             */
+/*   Updated: 2024/01/08 12:22:49 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WRONGANIMAL_HPP
-#define WRONGANIMAL_HPP
+#include "WrongCat.hpp"
 
-#include <iostream>
+WrongCat::WrongCat(void) : WrongAnimal("WrongCat") {
+    std::cout << this->_type << " has been create!" << std::endl;
+}
 
-class WrongAnimal {
-  
-	protected :
-		std::string _type;
-	
-	public :
-		WrongAnimal();
-		WrongAnimal(std::string type);
-		WrongAnimal(const WrongAnimal &copy);
-		~WrongAnimal();
+WrongCat::~WrongCat(void)
+{
+    std::cout << this->_type << " has been destroy!" << std::endl;
+}
 
-		WrongAnimal    &operator=(WrongAnimal const &rhs); 
-
-		void    makeSound(void) const;
-		std::string getType() const;
-};
-
-#endif
+void    WrongCat::makeSound(void) const {
+    std::cout << "Meow!" << std::endl;
+}

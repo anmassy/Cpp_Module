@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:03:05 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/11 10:51:25 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:53:38 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Animal::~Animal(void) {
 	std::cout << "Animal " << this->_type << " has been destroy!" << std::endl;
 }
 
-Animal	&Animal::operator=(Animal const &rhs) {
+Animal  &Animal::operator=(Animal const &rhs) {
 	if (this != &rhs) {
 		this->_type = rhs._type;
 	}

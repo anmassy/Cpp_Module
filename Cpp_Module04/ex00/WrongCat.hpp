@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 11:32:06 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:22:44 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:53:23 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 #include "WrongAnimal.hpp"
 
 class WrongCat : public WrongAnimal {
-    public :
-       WrongCat();
-       ~WrongCat();
+	public :
+		WrongCat();
+		~WrongCat();
 
-       void makeSound(void) const;
+		void makeSound(void) const;
 };
 
 #endif

@@ -6,11 +6,11 @@
 #    By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 11:40:42 by anmassy           #+#    #+#              #
-#    Updated: 2024/01/11 10:35:34 by anmassy          ###   ########.fr        #
+#    Updated: 2024/01/11 10:37:54 by anmassy          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ex01
+NAME = ex02
 
 SRCS =	main.cpp \
 		Animal.cpp \

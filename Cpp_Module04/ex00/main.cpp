@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:46:31 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/08 12:15:58 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:53:14 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int main(void)
 	meta->makeSound();
 	
 	delete  meta;
-    delete  j;
-    delete  i;
+	delete  j;
+	delete  i;
 	
 	std::cout << std::endl;
 	std::cout << "////////////////////WrongAnimal test////////////////////" << std::endl;

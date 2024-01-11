@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 15:54:02 by anmassy           #+#    #+#             */
-/*   Updated: 2024/01/10 18:57:02 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:52:42 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,17 @@
 #include "Animal.hpp"
 
 class Cat : public Animal {
-    private :
-        Brain   *_brain;
-        
-    public :
-        Cat();
-        Cat(const Cat &copy);
-        ~Cat();
-        
-        Cat& operator=(const Cat &rhs);
+	private :
+		Brain   *_brain;
+		
+	public :
+		Cat();
+		Cat(const Cat &copy);
+		~Cat();
+		
+		Cat& operator=(const Cat &rhs);
 
-        void makeSound(void) const;
+		void makeSound(void) const;
 };
 
 #endif
