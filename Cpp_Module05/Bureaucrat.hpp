@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:09:19 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/10 19:22:30 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/04/12 19:54:55 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,20 @@ class Bureaucrat {
         void    gradeIncrement(void);
         void    gradeDecrement(void);
         
+	    class GradeTooHighException : public std::exception {
+	    public:
+	    	const char *what(void) const throw();
+	    };
+	    class GradeTooLowException : public std::exception {
+	    public:
+	    	const char *what(void) const throw();
+	    };
+
     private:
         const std::string   _name;
         int                 _grade;
 };
+
+std::ostream& operator<<(std::ostream &o, const Bureaucrat &rhs);
 
 #endif

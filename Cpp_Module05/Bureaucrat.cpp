@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:08:34 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/10 19:25:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/04/12 21:56:07 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,18 @@
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(50) {
     std::cout << "default constructor called" << std::endl;
+    if (_grade < 1)
+		throw GradeTooHighException();
+	else if (_grade > 150)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
     std::cout << "basic constructor called" << std::endl;
+    if (_grade < 1)
+		throw GradeTooHighException();
+	else if (_grade > 150)
+		throw GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
@@ -44,14 +52,30 @@ int Bureaucrat::getGrade(void) const {
     return (this->_grade);
 }
 
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return ("Grade Too High Exception\n");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return ("Grade Too Low Exception\n");
+}
+
 void    Bureaucrat::gradeIncrement(void) {
-    if (this->_grade < 150)
-        return ;
-    this->_grade++;
+    std::cout << "increment fontion called" << std::endl;
+    if (this->_grade < 1)
+        throw GradeTooHighException();
+    this->_grade--;
 }
 
 void    Bureaucrat::gradeDecrement(void) {
-    if (this->_grade > 1)
-        return ;
-    this->_grade--;
+    std::cout << "decrement fontion called" << std::endl;
+    if (this->_grade > 150)
+        throw GradeTooLowException();
+    this->_grade++;
+}
+
+std::ostream& operator<<(std::ostream &o, const Bureaucrat &rhs)
+{
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+	return (o);
 }
