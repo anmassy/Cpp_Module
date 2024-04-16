@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:08:34 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/12 21:56:07 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:51:36 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,17 @@
 Bureaucrat::Bureaucrat() : _name("default"), _grade(50) {
     std::cout << "default constructor called" << std::endl;
     if (_grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (_grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {
     std::cout << "basic constructor called" << std::endl;
     if (_grade < 1)
-		throw GradeTooHighException();
+		throw Bureaucrat::GradeTooHighException();
 	else if (_grade > 150)
-		throw GradeTooLowException();
+		throw Bureaucrat::GradeTooLowException();
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) {
@@ -62,14 +62,14 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 
 void    Bureaucrat::gradeIncrement(void) {
     std::cout << "increment fontion called" << std::endl;
-    if (this->_grade < 1)
+    if (this->_grade <= 1)
         throw GradeTooHighException();
     this->_grade--;
 }
 
 void    Bureaucrat::gradeDecrement(void) {
     std::cout << "decrement fontion called" << std::endl;
-    if (this->_grade > 150)
+    if (this->_grade >= 150)
         throw GradeTooLowException();
     this->_grade++;
 }
