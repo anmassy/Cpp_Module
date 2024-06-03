@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:04:39 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 10:51:52 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/06/03 12:14:28 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(int ac, char **av) {
 		bureaucrat.gradeDecrement();
 		std::cout << bureaucrat << std::endl;
 
-		Form form("Alex", 95, 50);
+		Form form("June (alias mon doudou)", 95, 50);
 		bureaucrat.signForm(form);
 		std::cout << form << std::endl;
 
