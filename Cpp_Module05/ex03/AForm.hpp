@@ -6,17 +6,16 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:58 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 10:37:59 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/04/16 11:53:17 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef Form_HPP
+# define Form_HPP
 
 # include <iostream>
 # include "Bureaucrat.hpp"
 
- 
 class Bureaucrat;
 
 class Form {
@@ -34,8 +33,9 @@ class Form {
 		int getGradeToExecute(void) const;
 
 		void beSigned(Bureaucrat bureaucrat);
-		virtual void	execute(const Bureaucrat& executor) const = 0;
 		
+		virtual void	execute( const Bureaucrat& executor ) const = 0;
+
 		class GradeTooHighException : public std::exception {
 		public:
 			const char *what(void) const throw();
@@ -46,10 +46,10 @@ class Form {
 		};
 
 	private:
-		const std::string	_name;
-		bool				_signed;
-		const int			_gradeToSign;
-		const int			_gradeToExecute;
+		const std::string   _name;
+		bool                _signed;
+		const int           _gradeToSign;
+		const int           _gradeToExecute;
 
 };
 

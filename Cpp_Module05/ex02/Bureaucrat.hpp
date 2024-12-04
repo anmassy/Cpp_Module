@@ -34,6 +34,8 @@ class Bureaucrat {
         void    gradeDecrement(void);
         
         void    signForm(Form form);
+		void	executeForm(Form const & form); //pour que je puisse l'utiliser partout
+        
         
 	    class GradeTooHighException : public std::exception {
 	    public:

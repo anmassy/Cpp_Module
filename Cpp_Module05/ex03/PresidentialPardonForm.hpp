@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/03 11:02:25 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 12:42:44 by anmassy          ###   ########.fr       */
+/*   Created: 2024/04/17 18:35:12 by anmassy           #+#    #+#             */
+/*   Updated: 2024/04/17 18:44:52 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHRUBBERYCREATIONFORM_HPP
-# define SHRUBBERYCREATIONFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
 # include "Form.hpp"
 
-class ShrubberyCreationForm : public Form {
-	public:
-		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm &copy);
-		~ShrubberyCreationForm(void);
+class PresidentialPardonForm : public Form {
+	public :
+		PresidentialPardonForm(void);
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm &copy);
+		~PresidentialPardonForm(void);
 
-		ShrubberyCreationForm	&operator=(ShrubberyCreationForm const &rhs);
-		
-		std::string	GetTarget(void) const;
-		void		execute(Bureaucrat const & executor) const;
+		PresidentialPardonForm &operator=(PresidentialPardonForm const &rhs);
 
-	private:
+		std::string getTarget(void) const;
+		void	execute(Bureaucrat const & executor) const;
+	
+	private :
 		std::string _target;
-
 };
 
-#endif	
+#endif

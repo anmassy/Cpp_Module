@@ -3,32 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:04:39 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/04 16:25:13 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/10/09 17:46:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+//attention manque quelque truc les gestion des cas impossible
 
-int main(int ac, char **av) {
-	try {
-		Bureaucrat bureaucrat("Antoine", 12);
-		bureaucrat.gradeDecrement();
-		std::cout << bureaucrat << std::endl;
 
-		Form form("June (alias mon doudou)", 95, 50);
-		bureaucrat.signForm(Form);
-		std::cout << form << std::endl;
+#include <iostream>
+#include "ScalarConverter.hpp"
 
-		Form form2("Alice", 12, 1);
-		bureaucrat.signForm(form2);
-		std::cout << form2 << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << e.what();
-	}
-	return (0);
+int main(int argc, char** argv) {
+    // Vérifier que l'utilisateur a fourni un argument
+    if (argc != 2) {
+        std::cerr << "Usage: " << argv[0] << " <value>" << std::endl;
+        return 1;
+    }
+	// std::cout << "salut" << std::endl;
+    // Créer une instance de ScalarConverter
+    ScalarConverter converter;
+
+    // Convertir la valeur fournie par l'utilisateur
+    converter.convert(argv[1]);
+
+    return 0;
 }
+
