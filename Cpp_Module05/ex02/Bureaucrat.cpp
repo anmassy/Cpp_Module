@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:08:34 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/04 16:30:29 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:49:44 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void    Bureaucrat::gradeDecrement(void) {
 	this->_grade++;
 }
 
-void    Bureaucrat::signForm(Form form) {
+void    Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;

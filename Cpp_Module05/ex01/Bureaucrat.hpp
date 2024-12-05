@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:09:19 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/16 11:53:56 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:08:04 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class Bureaucrat {
         void    gradeIncrement(void);
         void    gradeDecrement(void);
         
-        void    signForm(Form form);
+        void    signForm(Form &form);
         
 	    class GradeTooHighException : public std::exception {
 	    public:

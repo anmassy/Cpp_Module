@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:32:02 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 12:46:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 11:36:50 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 RobotomyRequestForm::RobotomyRequestForm(void) : Form("Default Robotomy", 72, 45) {
 	// std::cout << "default RobotomyRequestForm constructor called" << std::endl;
+	srand(static_cast<unsigned int>(time(0)));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 72, 45) {
 	// std::cout << "RobotomyRequestForm constructor called" << std::endl;
+	srand(static_cast<unsigned int>(time(0)));
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) {
@@ -41,7 +43,7 @@ std::string	RobotomyRequestForm::GetTarget(void) const {
 }
 
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
-	static int i;
+	int i = rand();
 	if (executor.getGrade() > getGradeToExecute())
 		throw Form::GradeTooLowException();
 	if (i % 2 == 0)

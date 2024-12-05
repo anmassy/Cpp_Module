@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:08:34 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 10:44:38 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:07:57 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void    Bureaucrat::gradeDecrement(void) {
 	this->_grade++;
 }
 
-void    Bureaucrat::signForm(Form form) {
+void    Bureaucrat::signForm(Form &form) {
 	try {
 		form.beSigned(*this);
 		std::cout << this->_name << " signed " << form.getName() << std::endl;
 	}
 	catch(Form::GradeTooLowException &e) {
-		std::cout << this->_name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+		std::cout << this->_name << " couldn't sign " << form.getName() << " because " << e.what() << std::endl;
 	}
 	
 }

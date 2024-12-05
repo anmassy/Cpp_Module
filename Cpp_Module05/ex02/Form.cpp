@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:47:15 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 10:53:20 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:49:54 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return ("Grade Too Low Exception\n");
 }
 
-void Form::beSigned(Bureaucrat bureaucrat) {
+void Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw Form::GradeTooLowException();
 	this->_signed = true;

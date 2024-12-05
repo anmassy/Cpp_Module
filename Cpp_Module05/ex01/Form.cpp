@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:47:15 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 10:53:20 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 10:06:28 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,18 +70,26 @@ const char* Form::GradeTooLowException::what() const throw() {
 	return ("Grade Too Low Exception\n");
 }
 
-void Form::beSigned(Bureaucrat bureaucrat) {
+void Form::beSigned(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() > this->_gradeToSign)
 		throw Form::GradeTooLowException();
 	this->_signed = true;
+	std::cout << "signer ==== " << this->_signed << std::endl;
 }
 
+const std::string	Form::getIsSigned(void)const
+{
+	if (this->_signed)
+		return ("true");
+	else
+		return ("false");
+}
 
 std::ostream& operator<<(std::ostream &o, const Form &rhs)
 {
 	o << "/* Form information */" << std::endl
 	<< "form name :" << rhs.getName() << std::endl
-	<< "form Signed :" << rhs.getSigned() << std::endl
+	<< "form Signed :" << rhs.getIsSigned() << std::endl
 	<< "form gradeToSign :" << rhs.getGradeToSign() << std::endl
 	<< "form gradeToExecute :" << rhs.getGradeToExecute() << std::endl;
 	return (o);

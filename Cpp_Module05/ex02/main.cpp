@@ -6,29 +6,40 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:04:39 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/04 16:25:13 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 11:28:24 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Form.hpp"
 
 int main(int ac, char **av) {
-	try {
-		Bureaucrat bureaucrat("Antoine", 12);
-		bureaucrat.gradeDecrement();
-		std::cout << bureaucrat << std::endl;
+    try {
+        Bureaucrat bureaucrat("Antoine", 3);
+        ShrubberyCreationForm form1("Shrubbery");
+        RobotomyRequestForm form2("Robotomy");
+        PresidentialPardonForm form3("President");
 
-		Form form("June (alias mon doudou)", 95, 50);
-		bureaucrat.signForm(Form);
-		std::cout << form << std::endl;
+        std::cout << "\n( Shrubbery )" << std::endl;
+        bureaucrat.signForm(form1);
+        bureaucrat.executeForm(form1);
 
-		Form form2("Alice", 12, 1);
-		bureaucrat.signForm(form2);
-		std::cout << form2 << std::endl;
-	}
-	catch (std::exception & e) {
-		std::cerr << e.what();
-	}
-	return (0);
+        std::cout << "\n( Robotomy )" << std::endl;
+        bureaucrat.signForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        bureaucrat.executeForm(form2);
+        
+        std::cout << "\n( President )" << std::endl;
+        bureaucrat.signForm(form3);
+        bureaucrat.executeForm(form3);
+    }
+    catch (std::exception &e) {
+        std::cout << e.what() << std::endl;
+    }
+    return (0);
 }
