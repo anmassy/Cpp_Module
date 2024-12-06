@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:10:44 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/09 13:01:36 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/06 11:31:13 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@
 #include <iostream>
 #include <limits>  // Pour std::numeric_limits
 #include <cctype>  // Pour std::isdigit
+#include <cmath> // Pour std::isnan et std::isinf
 
 class ScalarConverter {
 public:
-    ScalarConverter() {};
-    // ScalarConverter(const ScalarConverter &copy);
-	// ~ScalarConverter() {};
+    ScalarConverter();
+    ScalarConverter(const ScalarConverter &copy);
+	~ScalarConverter();
 
-	// Form    &operator=(ScalarConverter const &rhs);
+	ScalarConverter    &operator=(ScalarConverter const &rhs);
     
     void convert(const std::string& param);
     bool identifyType(const std::string& param, char& charValue, int& intValue, float& floatValue, double& doubleValue);
@@ -37,12 +38,10 @@ private:
     static bool isFloat(const std::string& param, float& outValue);
     static bool isDouble(const std::string& param, double& outValue);
 
-    // Helpers pour les messages de conversion
-    // static void printResults(char charValue, int intValue, float floatValue, double doubleValue, bool charValid, bool intValid, bool floatValid, bool doubleValid);
     void displayResults(char charValue, int intValue, float floatValue, double doubleValue);
 
 };
 
-// std::ostream& operator<<(std::ostream &o, const ScalarConverterorm &rhs);
+std::ostream& operator<<(std::ostream &o, const ScalarConverter &rhs);
 
-#endif // SCALARCONVERTER_H
+#endif // SCALARCONVERTER_HPP

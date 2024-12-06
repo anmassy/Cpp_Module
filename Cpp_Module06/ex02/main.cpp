@@ -13,7 +13,7 @@ Base * generate(void) {
 	else if (roulette == 2)
 		return (new C);
 	else
-		return (NULL);
+		return (NULL); 
 }
 
 void identify(Base* p) {

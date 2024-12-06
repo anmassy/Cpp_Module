@@ -3,14 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:10:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/10/09 13:29:56 by marvin           ###   ########.fr       */
+/*   Updated: 2024/12/06 11:30:19 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
+
+ScalarConverter::ScalarConverter()
+{
+	// std::cout << "ScalarConverter Default Constructor called" << std::endl;
+}
+
+ScalarConverter::ScalarConverter(const ScalarConverter &copy)
+{
+	// std::cout << "ScalarConverter Copy Constructor called" << std::endl;
+	*this = copy;
+}
+
+ScalarConverter& ScalarConverter::operator=(ScalarConverter const &rhs) {
+    (void)rhs; // Ignorer rhs si aucune donnée n'est copiée
+    return *this; // Retourner l'objet courant
+}
+
+// Deconstructors
+ScalarConverter::~ScalarConverter()
+{
+	// std::cout << "ScalarConverter Deconstructor called" << std::endl;
+}
 
 // Méthode pour effectuer la conversion
 void ScalarConverter::convert(const std::string& param) {
@@ -171,29 +193,43 @@ bool ScalarConverter::isDouble(const std::string& param, double& outValue) {
 
 // Méthode pour afficher les résultats
 void ScalarConverter::displayResults(char charValue, int intValue, float floatValue, double doubleValue) {
-	// Vérification de l'affichage du caractère 
+
+// Gestion du char
 	if (std::isprint(charValue)) {
 		std::cout << "char: '" << charValue << "'" << std::endl;
+	}
+	else if (std::isnan(doubleValue) || std::isinf(doubleValue) || doubleValue < 0 || doubleValue > 255) {
+		std::cout << "char: impossible" << std::endl;
 	}
 	else {
 		std::cout << "char: Non displayable" << std::endl;
 	}
+	
+// Gestion de l'int
 	if (intValue == std::numeric_limits<int>::max() || intValue == std::numeric_limits<int>::min()) {
         std::cout << "int: impossible" << std::endl;
     }
 	else {
         std::cout << "int: " << intValue << std::endl;
     }
+// Gestion du float
 	if (floatValue >= std::numeric_limits<int>::max() || intValue <= std::numeric_limits<int>::min()) {
 			std::cout << "float: " << floatValue << "f" << std::endl;
 	}
 	else {
 		std::cout << "float: " << floatValue << ".0f" << std::endl;
 	}
+// Gestion du double
 	if (doubleValue >= std::numeric_limits<int>::max() || doubleValue <= std::numeric_limits<int>::min() || doubleValue != doubleValue) { // Condition pour NaN {
 			std::cout << "double: " << doubleValue << std::endl;
 	}
 	else {
 		std::cout << "double: " << doubleValue << ".0" << std::endl;
 	}
+}
+
+std::ostream& operator<<(std::ostream &o, const ScalarConverter &rhs) {
+    // On peut simplement afficher un message indiquant que l'objet est de type ScalarConverter
+    o << "ScalarConverter object (no internal state to display)" << std::endl;
+    return o;
 }
