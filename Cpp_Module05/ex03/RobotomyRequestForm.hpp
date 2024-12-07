@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:27:44 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/17 18:44:56 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:57:08 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ class RobotomyRequestForm : public Form {
 	private :
 		std::string _target;
 };
+
+std::ostream	&operator<<(std::ostream &str, RobotomyRequestForm const &form);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:58 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/16 11:53:17 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 19:39:03 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Form {
 		int getGradeToSign(void) const;
 		int getGradeToExecute(void) const;
 
-		void beSigned(Bureaucrat bureaucrat);
+		void beSigned(Bureaucrat &bureaucrat);
 		
 		virtual void	execute( const Bureaucrat& executor ) const = 0;
 

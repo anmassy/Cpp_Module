@@ -3,10 +3,11 @@ SRCS =	./Bureaucrat.cpp \
 		./ShrubberyCreationForm.cpp \
 		./RobotomyRequestForm.cpp \
 		./PresidentialPardonForm.cpp \
+		./Intern.cpp \
 		./main.cpp
 
 CC = clang++
-NAME = ex02
+NAME = ex03
 
 CFLANG = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)

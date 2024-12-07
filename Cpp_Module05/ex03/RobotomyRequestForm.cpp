@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 18:27:47 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/18 18:30:39 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/07 17:55:26 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,9 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 		std::cout << "MMMH EUUUH " << this->_target << "is robotomized !!" << std::endl;
 	else
 		std::cout << "OUF " << this->_target << "is an human !!" << std::endl;
+}
+
+std::ostream	&operator<<(std::ostream &str, RobotomyRequestForm const &form)
+{
+	return (str << form.getName() << " form, signed: " << form.getSigned() << ", sign grade: " << form.getGradeToSign() << ", exec grade: " << form.getGradeToExecute());
 }

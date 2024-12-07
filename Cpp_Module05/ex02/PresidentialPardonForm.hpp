@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:38:10 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 12:41:00 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 19:31:01 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ class PresidentialPardonForm : public Form {
 
 	private:
 		std::string _target;
-
 };
+
+std::ostream	&operator<<(std::ostream &str, PresidentialPardonForm const &form);
 
 #endif

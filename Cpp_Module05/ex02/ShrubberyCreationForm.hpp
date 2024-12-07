@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:02:25 by anmassy           #+#    #+#             */
-/*   Updated: 2024/06/03 12:42:44 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/05 19:31:14 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ class ShrubberyCreationForm : public Form {
 		std::string _target;
 
 };
+
+std::ostream	&operator<<(std::ostream &str, ShrubberyCreationForm const &form);
 
 #endif	
