@@ -1,7 +1,7 @@
 SRCS =	./main.cpp
 
 CC = c++
-NAME = ex00
+NAME = ex02
 
 CFLANG = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)
