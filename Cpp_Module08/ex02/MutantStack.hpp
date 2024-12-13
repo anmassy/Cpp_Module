@@ -5,27 +5,36 @@
 #include <vector>
 #include <list>
 #include <limits>
+#include <stack>
 #include <iterator>
 
-class MustantStack {
+template<typename T>
+class MutantStack : public std::stack<T> {
 	public :
+	using iterator = typename std::stack<T>::container_type::iterator;
+
 	// Constructors
-		MutantStack(void);
-		MutantStack(const MutantStack &src);
+		MutantStack() : std::stack<T>() {}
+		MutantStack(const MutantStack &src) : std::stack<T>(src) {}
 
 	// Deconstructors
-		~MutantStack(void);
+		~MutantStack() {}
 
 	// Overloaded Operators
-		MutantStack &operator=(const MutantStack &src);
+		MutantStack &operator=(const MutantStack &src) {
+			if (this != &src) {
+				std::stack<T>::operator=(src);
+			}
+			return *this;
+		}
 
-	// Public Methods
+	iterator begin() {
+		return this->c.begin();
+	}
 
-	// Getter
-
-	private :
-	// Private attribut
-
+	iterator end() {
+		return this->c.end();
+	}
 };
 
 #endif
