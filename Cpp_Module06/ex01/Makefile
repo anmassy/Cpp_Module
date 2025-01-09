@@ -13,6 +13,12 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $(NAME) $(OBJS)
 
+%.o: %.cpp
+	$(CC) $(CFLAG) -c $< -o $@
+
+%.p: %.cpp
+	$(CC) -MM $< > $@
+
 clean:
 	rm -f $(OBJS)
 

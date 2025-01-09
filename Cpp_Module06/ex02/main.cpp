@@ -42,8 +42,6 @@ void identify(Base& p) {
 }
 
 int main() {
-
-
 	srand(time(NULL));
 	Base* random;
 
