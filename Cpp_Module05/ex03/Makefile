@@ -6,7 +6,7 @@ SRCS =	./Bureaucrat.cpp \
 		./Intern.cpp \
 		./main.cpp
 
-CC = clang++
+CC = c++
 NAME = ex03
 
 CFLANG = -Wall -Wextra -Werror -std=c++98
@@ -17,6 +17,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(CFLAG) -c $< -o $@
+
+%.p: %.cpp
+	$(CC) -MM $< > $@
 
 clean:
 	rm -f $(OBJS)

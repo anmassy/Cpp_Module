@@ -6,23 +6,24 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 12:32:02 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 19:30:31 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 06:21:51 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(void) : Form("Default Robotomy", 72, 45) {
 	// std::cout << "default RobotomyRequestForm constructor called" << std::endl;
 	srand(static_cast<unsigned int>(time(0)));
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 72, 45) {
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 72, 45), _target(target){
 	// std::cout << "RobotomyRequestForm constructor called" << std::endl;
 	srand(static_cast<unsigned int>(time(0)));
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) {
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copy) : Form(copy) {
 	// std::cout << "Copy RobotomyRequestForm constructor called" << std::endl;
 	*this = copy;
 }
@@ -52,7 +53,6 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const {
 		std::cout << "OUF " << this->_target << "is an human !!" << std::endl;
 }
 
-std::ostream	&operator<<(std::ostream &str, RobotomyRequestForm const &form)
-{
+std::ostream	&operator<<(std::ostream &str, RobotomyRequestForm const &form) {
 	return (str << form.getName() << " form, signed: " << form.getSigned() << ", sign grade: " << form.getGradeToSign() << ", exec grade: " << form.getGradeToExecute());
 }

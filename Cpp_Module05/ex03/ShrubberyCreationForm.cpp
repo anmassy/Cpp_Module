@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:25:25 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 19:29:54 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 06:23:43 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbe
 	// std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {
 	// std::cout << "Copy ShrubberyCreationForm constructor called" << std::endl;
 	*this = copy;
 }

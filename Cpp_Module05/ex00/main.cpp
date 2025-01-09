@@ -6,13 +6,13 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:04:39 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 09:31:35 by anmassy          ###   ########.fr       */
+/*   Updated: 2024/12/22 16:40:21 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-int	main(int ac, char **av) {
+int	main(void) {
 	
 	/*create bureaucrat*/
 	try {

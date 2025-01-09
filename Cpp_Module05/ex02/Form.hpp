@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:59:58 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 10:49:48 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 05:45:53 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
- 
 class Bureaucrat;
 
 class Form {
@@ -26,7 +25,7 @@ class Form {
 		Form(const Form &copy);
 		~Form();
 		
-		Form    &operator=(Form const &rhs);
+		Form	&operator=(Form const &rhs);
 		
 		std::string getName(void) const;
 		bool getSigned(void) const;

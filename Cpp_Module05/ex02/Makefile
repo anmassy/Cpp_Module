@@ -5,10 +5,10 @@ SRCS =	./Bureaucrat.cpp \
 		./PresidentialPardonForm.cpp \
 		./main.cpp
 
-CC = clang++
+CC = c++
 NAME = ex02
 
-CFLANG = -Wall -Wextra -Werror -std=c++98
+CFLAG = -Wall -Wextra -Werror -std=c++98
 OBJS = $(SRCS:.cpp=.o)
 
 
@@ -16,6 +16,12 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAG) -o $(NAME) $(OBJS)
+
+%.o: %.cpp
+	$(CC) $(CFLAG) -c $< -o $@
+
+%.p: %.cpp
+	$(CC) -MM $< > $@
 
 clean:
 	rm -f $(OBJS)

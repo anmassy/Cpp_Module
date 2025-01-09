@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 20:08:34 by anmassy           #+#    #+#             */
-/*   Updated: 2024/04/19 13:34:58 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 06:25:11 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,21 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return ("Grade Too Low Exception\n");
 }
 
-void    Bureaucrat::gradeIncrement(void) {
+void	Bureaucrat::gradeIncrement(void) {
 	// std::cout << "increment fontion called" << std::endl;
 	if (this->_grade <= 1)
 		throw GradeTooHighException();
 	this->_grade--;
 }
 
-void    Bureaucrat::gradeDecrement(void) {
+void	Bureaucrat::gradeDecrement(void) {
 	// std::cout << "decrement fontion called" << std::endl;
 	if (this->_grade >= 150)
 		throw GradeTooLowException();
 	this->_grade++;
 }
 
-void    Bureaucrat::signForm(Form &Form) {
+void	Bureaucrat::signForm(Form &Form) {
 	try {
 		Form.beSigned(*this);
 		std::cout << *this << " signed " << Form.getName() << std::endl;

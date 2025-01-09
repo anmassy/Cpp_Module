@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 12:47:15 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 19:29:47 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 05:45:37 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void Form::beSigned(Bureaucrat &bureaucrat) {
 		throw Form::GradeTooLowException();
 	this->_signed = true;
 }
-
 
 std::ostream& operator<<(std::ostream &o, const Form &rhs)
 {

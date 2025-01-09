@@ -6,7 +6,7 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 11:25:25 by anmassy           #+#    #+#             */
-/*   Updated: 2024/12/05 19:29:54 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/01/09 06:19:52 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbe
 	// std::cout << "ShrubberyCreationForm constructor called" << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) {
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copy) : Form(copy) {
 	// std::cout << "Copy ShrubberyCreationForm constructor called" << std::endl;
 	*this = copy;
 }
@@ -44,8 +44,8 @@ std::string	ShrubberyCreationForm::GetTarget(void) const {
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	if (executor.getGrade() > getGradeToExecute())
 		throw Form::GradeTooLowException();
-		
-	std::ofstream file(this->_target + "_shrubbery");
+	
+	std::ofstream file((this->_target + "_shrubbery").c_str());
 	file << "               ,@@@@@@@,\n";
 	file << "       ,,,.   ,@@@@@@/@@,  .oo8888o.\n";
 	file << "    ,&%%&%&&%,@@@@@/@@@@@@,8888\\88/8o\n";
@@ -61,7 +61,6 @@ void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const {
 	std::cout << "Le fichier " << _target << "_shrubbery a été créé avec succès." << std::endl;
 }
 
-std::ostream	&operator<<(std::ostream &str, ShrubberyCreationForm const &form)
-{
+std::ostream	&operator<<(std::ostream &str, ShrubberyCreationForm const &form) {
 	return (str << form.getName() << " form, signed: " << form.getSigned() << ", sign grade: " << form.getGradeToSign() << ", exec grade: " << form.getGradeToExecute());
 }
