@@ -6,59 +6,60 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:10:29 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/06 11:30:19 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/05/14 20:58:31 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter()
-{
+ScalarConverter::ScalarConverter() {
 	// std::cout << "ScalarConverter Default Constructor called" << std::endl;
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter &copy)
-{
+ScalarConverter::ScalarConverter(const ScalarConverter &copy) {
 	// std::cout << "ScalarConverter Copy Constructor called" << std::endl;
 	*this = copy;
 }
 
-ScalarConverter& ScalarConverter::operator=(ScalarConverter const &rhs) {
-    (void)rhs; // Ignorer rhs si aucune donnée n'est copiée
-    return *this; // Retourner l'objet courant
-}
-
-// Deconstructors
-ScalarConverter::~ScalarConverter()
-{
+ScalarConverter::~ScalarConverter() {
 	// std::cout << "ScalarConverter Deconstructor called" << std::endl;
 }
 
-// Méthode pour effectuer la conversion
+ScalarConverter& ScalarConverter::operator=(const ScalarConverter &rhs) {
+	(void)rhs;
+	return *this;
+}
+
 void ScalarConverter::convert(const std::string& param) {
-	char charValue;
+	char charValue = 0;
 	int intValue = 0;
 	float floatValue = 0.0f;
 	double doubleValue = 0.0;
-	
-	// Identifier le type et stock les valeurs
-	if (!identifyType(param, charValue, intValue, floatValue, doubleValue)) {
-		std::cout << "Input is not a valid type." << std::endl;
-		return; // Sortir si l'entrée n'est pas valide
+	bool intOverflow = false;
+	bool isSpecial = false;
+
+	if (param == "nan" || param == "nanf" || param == "+inf" || param == "+inff" || param == "-inf" || param == "-inff") {
+		isSpecial = true;
+		floatValue = std::strtof(param.c_str(), nullptr);
+		doubleValue = static_cast<double>(floatValue);
+		displayResults(0, 0, floatValue, doubleValue, true, true);
+		return;
 	}
-	// Afficher les résultats
-	displayResults(charValue, intValue, floatValue, doubleValue);
+	if (!identifyType(param, charValue, intValue, floatValue, doubleValue, intOverflow)) {
+		std::cout << "Input is not a valid type." << std::endl;
+		return;
+	}
+	displayResults(charValue, intValue, floatValue, doubleValue, intOverflow, isSpecial);
 }
 
-// Identifier le type de la chaîne et stocker les valeurs
-bool ScalarConverter::identifyType(const std::string& param, char& charValue, int& intValue, float& floatValue, double& doubleValue) {
+bool ScalarConverter::identifyType(const std::string& param, char& charValue, int& intValue, float& floatValue, double& doubleValue, bool& intOverflow) {
 	if (isChar(param, charValue)) {
 		intValue = static_cast<int>(charValue);
 		floatValue = static_cast<float>(charValue);
 		doubleValue = static_cast<double>(charValue);
 		return true;
 	}
-	else if (isInt(param, intValue)) {
+	else if (isInt(param, intValue, intOverflow)) {
 		charValue = static_cast<char>(intValue);
 		floatValue = static_cast<float>(intValue);
 		doubleValue = static_cast<double>(intValue);
@@ -76,160 +77,92 @@ bool ScalarConverter::identifyType(const std::string& param, char& charValue, in
 		floatValue = static_cast<float>(doubleValue);
 		return true;
 	}
-	return false; // Aucun type valide détecté
+	return false;
 }
 
-// Vérification si la chaîne représente un caractère valide
 bool ScalarConverter::isChar(const std::string& param, char& outValue) {
-	// Cas où la chaîne a une longueur de 1 et que c'est un char
 	if (param.length() == 1 && !std::isdigit(param[0])) {
 		outValue = param[0];
 		return true;
 	}
-	return false;  // Ce n'est pas un char valide
+	return false;
 }
 
-// Vérification si la chaîne représente un entier valide
-bool ScalarConverter::isInt(const std::string& param, int& outValue) {
+bool ScalarConverter::isInt(const std::string& param, int& outValue, bool& intOverflow) {
+	if (param.empty())
+		return false;
+
+	int sign = 1;
 	size_t i = 0;
-	// Vérifier si le premier caractère est un signe '+' ou '-', on l'ignore
+	long long result = 0;
+
 	if (param[0] == '+' || param[0] == '-') {
-		i = 1;  // Incrémenter pour ignorer le signe
-	}
-	// Vérifier que tous les caractères restants sont des chiffres
-	while (i < param.length()) {
-		if (!std::isdigit(param[i])) {
-			return false; // Ce n'est pas un int valide
-		}
+		if (param[0] == '-') sign = -1;
 		i++;
 	}
-	long longValue = std::stoll(param); // Convertir en long long pour avoir plus de place
-	// Vérifier si la valeur est dans les limites de int
-	if (longValue < std::numeric_limits<int>::min() || longValue > std::numeric_limits<int>::max()) {
-		return false;  // La valeur dépasse les limites d'un int
-	}
-	// Si tout est bon, on affecte la valeur convertie à `outValue`
-	outValue = static_cast<int>(longValue);
-	return true; // Conversion réussie
-}
-
-bool ScalarConverter::isFloat(const std::string& param, float& outValue) {
-	if (param == "+inf" || param == "-inf" || param == "nanf") {
-		outValue = std::atof(param.c_str());  // Cas spéciaux pour les floats
-		return true;
-	}
-
-	size_t i = 0;
-	bool hasDecimalPoint = false;
-	bool hasDigits = false;
-
-	// Ignorer le signe au début
-	if (param[i] == '+' || param[i] == '-') {
-		i++;
-	}
-	// Parcourir chaque caractère
-	while (i < param.length()) {
-		char c = param[i];
-
-		// Vérifier si c'est un chiffre
-		if (std::isdigit(c)) {
-			hasDigits = true;
-		}
-		// Vérifier le point décimal
-		else if (c == '.' && !hasDecimalPoint) {
-			hasDecimalPoint = true;
-		}
-		// Vérifier la présence de 'f' à la fin
-		else if (c == 'f' && i == param.length() - 1) {
-			break;  // Fin valide pour un float
-		}
-		// Si on rencontre un caractère non valide
-		else {
-			return false;
-		}
-		i++;
-	}
-	// S'assurer qu'il y a au moins un chiffre
-	if (!hasDigits) {
+	if (i == param.length()) {
 		return false;
 	}
-	// Conversion en float
-	outValue = std::atof(param.c_str());;  // Conversion sûre maintenant que la chaîne est validée
+	while (i < param.length()) {
+		if (!std::isdigit(param[i]))
+			return false;
+		int digit = param[i] - '0';
+		result = result * 10 + digit;
+		if ((sign == 1 && result > static_cast<long long>(std::numeric_limits<int>::max())) ||
+			(sign == -1 && -result < static_cast<long long>(std::numeric_limits<int>::min()))) {
+			intOverflow = true;
+			return true;
+		}
+		i++;
+	}
+	outValue = static_cast<int>(sign * result);
 	return true;
+}
+
+
+bool ScalarConverter::isFloat(const std::string& param, float& outValue) {
+	char* endPtr = nullptr;
+	outValue = std::strtof(param.c_str(), &endPtr);
+	return endPtr != nullptr && *endPtr == 'f';
 }
 
 bool ScalarConverter::isDouble(const std::string& param, double& outValue) {
-	if (param == "+inf" || param == "-inf" || param == "nan") {
-		outValue = std::atof(param.c_str());
-		return true;
-	}
-
-	size_t i = 0;
-	bool hasDecimalPoint = false;
-	bool hasDigits = false;
-
-	if (param[i] == '+' || param[i] == '-') {
-		i++;
-	}
-	while (i < param.length()) {
-		char c = param[i];
-		if (std::isdigit(c)) {
-			hasDigits = true;
-		}
-		else if (c == '.' && !hasDecimalPoint) {
-			hasDecimalPoint = true;
-		}
-		else {
-			return false;
-		}
-		i++;
-	}
-	if (!hasDigits) {
-		return false;
-	}
-	outValue = std::atof(param.c_str());
-	return true;
+	char* endPtr = nullptr;
+	outValue = std::strtod(param.c_str(), &endPtr);
+	return endPtr != nullptr && *endPtr == '\0';
 }
 
-// Méthode pour afficher les résultats
-void ScalarConverter::displayResults(char charValue, int intValue, float floatValue, double doubleValue) {
-
-// Gestion du char
-	if (std::isprint(charValue)) {
-		std::cout << "char: '" << charValue << "'" << std::endl;
-	}
-	else if (std::isnan(doubleValue) || std::isinf(doubleValue) || doubleValue < 0 || doubleValue > 255) {
+void ScalarConverter::displayResults(char charValue, int intValue, float floatValue, double doubleValue, bool intOverflow, bool isSpecial) {
+	// CHAR
+	if (isSpecial || intOverflow || doubleValue < 0 || doubleValue > 255 || std::isnan(doubleValue)) {
 		std::cout << "char: impossible" << std::endl;
 	}
-	else {
+	else if (!std::isprint(charValue)) {
 		std::cout << "char: Non displayable" << std::endl;
 	}
-	
-// Gestion de l'int
-	if (intValue == std::numeric_limits<int>::max() || intValue == std::numeric_limits<int>::min()) {
-        std::cout << "int: impossible" << std::endl;
-    }
 	else {
-        std::cout << "int: " << intValue << std::endl;
-    }
-// Gestion du float
-	if (floatValue >= std::numeric_limits<int>::max() || intValue <= std::numeric_limits<int>::min()) {
-			std::cout << "float: " << floatValue << "f" << std::endl;
+		std::cout << "char: '" << charValue << "'" << std::endl;
+	}
+	// INT
+	if (isSpecial || intOverflow) {
+		std::cout << "int: impossible" << std::endl;
 	}
 	else {
-		std::cout << "float: " << floatValue << ".0f" << std::endl;
+		std::cout << "int: " << intValue << std::endl;
 	}
-// Gestion du double
-	if (doubleValue >= std::numeric_limits<int>::max() || doubleValue <= std::numeric_limits<int>::min() || doubleValue != doubleValue) { // Condition pour NaN {
-			std::cout << "double: " << doubleValue << std::endl;
-	}
-	else {
-		std::cout << "double: " << doubleValue << ".0" << std::endl;
-	}
+	// FLOAT
+	std::cout << "float: " << floatValue;
+	if (floatValue == static_cast<int>(floatValue) && !std::isinf(floatValue) && !std::isnan(floatValue))
+		std::cout << ".0";
+	std::cout << "f" << std::endl;
+	// DOUBLE
+	std::cout << "double: " << doubleValue;
+	if (doubleValue == static_cast<int>(doubleValue) && !std::isinf(doubleValue) && !std::isnan(doubleValue))
+		std::cout << ".0";
+	std::cout << std::endl;
 }
 
 std::ostream& operator<<(std::ostream &o, const ScalarConverter &rhs) {
-    // On peut simplement afficher un message indiquant que l'objet est de type ScalarConverter
-    o << "ScalarConverter object (no internal state to display)" << std::endl;
-    return o;
+	o << "ScalarConverter object (no state)" << std::endl;
+	return o;
 }

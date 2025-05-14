@@ -6,42 +6,41 @@
 /*   By: anmassy <anmassy@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/08 08:10:44 by marvin            #+#    #+#             */
-/*   Updated: 2024/12/06 11:31:13 by anmassy          ###   ########.fr       */
+/*   Updated: 2025/05/14 20:51:12 by anmassy          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ScalarConverter_HPP
-# define ScalarConverter_HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
 #include <string>
 #include <iostream>
-#include <limits>  // Pour std::numeric_limits
-#include <cctype>  // Pour std::isdigit
-#include <cmath> // Pour std::isnan et std::isinf
+#include <limits>
+#include <cctype>
+#include <cmath>
+#include <cstdlib>
 
 class ScalarConverter {
 public:
     ScalarConverter();
     ScalarConverter(const ScalarConverter &copy);
-	~ScalarConverter();
+    ~ScalarConverter();
 
-	ScalarConverter    &operator=(ScalarConverter const &rhs);
-    
+    ScalarConverter &operator=(ScalarConverter const &rhs);
+
     void convert(const std::string& param);
-    bool identifyType(const std::string& param, char& charValue, int& intValue, float& floatValue, double& doubleValue);
 
 private:
-
-    // Méthodes pour identifier les types
     static bool isChar(const std::string& param, char& outValue);
-    static bool isInt(const std::string& param, int& outValue);
+    static bool isInt(const std::string& param, int& outValue, bool& intOverflow);
     static bool isFloat(const std::string& param, float& outValue);
     static bool isDouble(const std::string& param, double& outValue);
 
-    void displayResults(char charValue, int intValue, float floatValue, double doubleValue);
-
+    bool identifyType(const std::string& param, char& charValue, int& intValue, float& floatValue, double& doubleValue, bool& intOverflow);
+    void displayResults(char charValue, int intValue, float floatValue, double doubleValue, bool intOverflow, bool isSpecial);
 };
 
 std::ostream& operator<<(std::ostream &o, const ScalarConverter &rhs);
 
 #endif // SCALARCONVERTER_HPP
+
