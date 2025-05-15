@@ -1,4 +1,5 @@
-SRCS =	./main.cpp
+SRCS =	./main.cpp \
+		./span.cpp
 
 CC = c++
 NAME = ex01

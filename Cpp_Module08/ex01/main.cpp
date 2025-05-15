@@ -1,82 +1,63 @@
 #include "Span.hpp"
+#include <iostream>
 #include <vector>
-#include <list>
-#include <limits>
-#include <iterator>
+#include <cstdlib>
+#include <ctime>
 
-Span::Span(void) : _number(0), _size(0) {
-	// std::cout << "Span default Constructor is called" << std::endl;
-}
+int main() {
+	// try {
+		std::cout << "=== Test du sujet ===" << std::endl;
+		Span sp = Span(5);
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		std::cout << "Shortest span: " << sp.shortestSpan() << std::endl;
+		std::cout << "Longest span: " << sp.longestSpan() << std::endl;
+		// try {
+		// 	sp.addNumber(42);
+		// }
+		// catch (const std::exception& e) {
+		// 	std::cout << "Expected error: " << e.what() << std::endl;
+		// }
 
-Span::Span(unsigned int nb) : _size(nb) {
-	// std::cout << "Span default Constructor is called" << std::endl;
-}
+		// std::cout << "\n=== Test avec addRange ===" << std::endl;
+		// std::vector<int> vec;
+		// for (int i = 0; i < 100; ++i)
+		// 	vec.push_back(rand() % 1000);
+		// Span rangeSpan(150);
+		// rangeSpan.addRange(vec.begin(), vec.end());
+		// std::cout << "Shortest span in rangeSpan: " << rangeSpan.shortestSpan() << std::endl;
+		// std::cout << "Longest span in rangeSpan: " << rangeSpan.longestSpan() << std::endl;
+		// try {
+		// 	rangeSpan.addRange(vec.begin(), vec.end());
+		// }
+		// catch (const std::exception& e) {
+		// 	std::cout << "Expected range error: " << e.what() << std::endl;
+		// }
 
-Span::Span(const Span &src) : _size(src._size), _number(src._number){
-	// std::cout << "Span Copy Constructor called" << std::endl;
-	*this = src;
-}
+		// std::cout << "\n=== Test avec un span trop petit ===" << std::endl;
+		// try {
+		// 	Span small(1);
+		// 	small.addNumber(5);
+		// 	small.shortestSpan();
+		// }
+		// catch (const std::exception& e) {
+		// 	std::cout << "Expected span error: " << e.what() << std::endl;
+		// }
 
-Span::~Span(void) {
-	// std::cout << "Span Deconstructor called" << std::endl;
-}
+		// std::cout << "\n=== Test avec un enorme span ===" << std::endl;
+		// Span bigSpan(10000);
+		// for (int i = 0; i < 10000; ++i)
+		// 	bigSpan.addNumber(i * 3);
+		// std::cout << "Shortest: " << bigSpan.shortestSpan() << std::endl;
+		// std::cout << "Longest: " << bigSpan.longestSpan() << std::endl;
+		
+	// }
+	// catch (const std::exception& e) {
+	// 	std::cerr << "error: " << e.what() << std::endl;
+	// }
 
-Span &Span::operator=(const Span &src) {
-	if (this == &src) {
-		this->_size = src.getSize();
-		this->_number = src._number;
-	}
-	return *this;
-}
-
-unsigned int Span::getSize(void) const {
-	return (this->_size);
-}
-
-void	Span::addNumber(int nb) {
-	//ajouter condition si n inferieur a 2 et sir ca depasse size
-	this->_number.push_back(nb);
-}
-
-// Find the shortest span
-unsigned int Span::shortestSpan() const {
-	//ajouter condition si n inferieur a 2 et sir ca depasse size
-	size_t i = 1;
-
-	std::vector<int> sorted(this->_number);
-	std::sort(sorted.begin(), sorted.end());
-	int shortest = std::numeric_limits<int>::max();
-
-	while (i < sorted.size()) {
-		int difference;
-
-		difference = sorted[i] - sorted[i - 1];
-		if (difference < shortest)
-			shortest = difference;
-		i++;
-	}
-
-	return (shortest);
-}
-
-unsigned int Span::longestSpan() const {
-	//ajouter condition si n inferieur a 2 et sir ca depasse size
-	std::vector<int>::const_iterator min = std::min_element(this->_number.begin(), this->_number.end());
-	std::vector<int>::const_iterator max = std::max_element(this->_number.begin(), this->_number.end());
-
-	return (*max - *min);
-}
-
-
-int main()
-{
-	Span sp = Span(5);
-	sp.addNumber(6);
-	sp.addNumber(2);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl;
 	return 0;
 }

@@ -13,14 +13,11 @@ class MutantStack : public std::stack<T> {
 	public :
 	using iterator = typename std::stack<T>::container_type::iterator;
 
-	// Constructors
 		MutantStack() : std::stack<T>() {}
 		MutantStack(const MutantStack &src) : std::stack<T>(src) {}
 
-	// Deconstructors
 		~MutantStack() {}
 
-	// Overloaded Operators
 		MutantStack &operator=(const MutantStack &src) {
 			if (this != &src) {
 				std::stack<T>::operator=(src);

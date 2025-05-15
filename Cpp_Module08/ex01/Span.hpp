@@ -2,38 +2,50 @@
 #define SPAN_HPP
 
 #include <iostream>
-#include <algorithm>  // Pour std::find
-#include <vector>     // Exemple de conteneur
-#include <list>       // Exemple avec list
-#include <exception>  // Pour std::exception
+#include <vector>
+#include <algorithm>
+#include <stdexcept>
+#include <iterator>
 
 class Span {
-	public :
-	// Constructors
+	public:
+		Span();
 		Span(unsigned int nb);
 		Span(const Span &src);
+		Span& operator=(const Span &src);
+		~Span();
 
-	// Deconstructors
-		~Span(void);
+		void addNumber(int number);
 
-	// Overloaded Operators
-		Span &operator=(const Span &src);
+		template<typename InputIterator>
+		void addRange(InputIterator begin, InputIterator end) {
+			if (std::distance(begin, end) + _number.size() > _size)
+				throw std::overflow_error("Range too large");
+			_number.insert(_number.end(), begin, end);
+		}
 
-	// Public Methods
-		void addNumber(int nb);
-		unsigned int shortestSpan(void) const;
-		unsigned int longestSpan(void) const;
+		unsigned int shortestSpan() const;
+		unsigned int longestSpan() const;
 
-	// Getter
-		unsigned int getSize(void) const;
+		unsigned int getSize() const;
 
-	private :
-	// Private attribut
+		class SpanFullException : public std::exception {
+		public:
+			const char* what() const throw() {
+				return "Cannot add number: Span is already full.";
+			}
+		};
+		
+		class NotEnoughElementsException : public std::exception {
+		public:
+			const char* what() const throw() {
+				return "Not enough elements to calculate a span.";
+			}
+		};
+
+	private:
 		std::vector<int> _number;
 		unsigned int _size;
-
-	// Constructors
-		Span(void);
 };
 
 #endif
