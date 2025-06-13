@@ -2,18 +2,16 @@
 #define PMERGEME_HPP
 
 #include <iostream>
+#include <vector>
+#include <deque>
 #include <sstream>
+#include <ctime>
+#include <iomanip>
 
-class PmergeMe
-{
-	private:
-	
-	public:
-		PmergeMe();
-		PmergeMe(const PmergeMe& other);
-		PmergeMe& operator=(const PmergeMe& other);
-		~PmergeMe();
+void binaryInsert(std::vector<int>& sorted, int value);
+void fordJohnsonSort(std::vector<int>& arr);
 
-};
+void binaryInsert(std::deque<int>& sorted, int value);
+void fordJohnsonSort(std::deque<int>& arr);
 
 #endif
