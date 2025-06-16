@@ -2,26 +2,19 @@
 
 BitcoinExchange::BitcoinExchange()
 {
-	// Constructor implementation
 	checkData();
 }
 
-BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _quotes(other._quotes)
-{
-	// Copy constructor implementation
-}
+BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _quotes(other._quotes) {}
+
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& other)
 {
-	// Assignment operator implementation
 	if (this != &other)
 		_quotes = other._quotes;
 	return *this;
 }
 
-BitcoinExchange::~BitcoinExchange()
-{
-	// Destructor implementation
-}
+BitcoinExchange::~BitcoinExchange() {}
 
 void BitcoinExchange::checkData()
 {
@@ -45,7 +38,7 @@ void BitcoinExchange::checkData()
 	file.close();
 }
 
-std::string trim(const std::string& s)
+std::string BitcoinExchange::trim(const std::string& s)
 {
 	size_t start = s.find_first_not_of(" \t\r\n");
 	size_t end = s.find_last_not_of(" \t\r\n");
@@ -63,18 +56,18 @@ void	BitcoinExchange::execute(const std::string& filename)
 		return;
 	}
 	std::string line;
-
 	std::getline(file, line);
+	while (line.empty())
+		std::getline(file, line);
+	line = trim(line);
 	if (line != "date | value")
 	{
 		std::cerr << "Error: invalid format in file. Expected 'date | value' as the first line." << std::endl;
 		file.close();
 		return;
 	}
-
 	while (std::getline(file, line))
 	{
-
 		std::istringstream iss(line);
 		std::string date;
 		std::string valueStr;
@@ -93,6 +86,7 @@ void	BitcoinExchange::execute(const std::string& filename)
 		}
 		if (!date.empty())
 			date = date.erase(date.length() -1);
+		date = trim(date);
 		if (!isValidDate(date))
 		{
 			std::cerr << "bad input => " << date << std::endl;
@@ -100,6 +94,7 @@ void	BitcoinExchange::execute(const std::string& filename)
 		}
 		if(!valueStr.empty())
 			valueStr = valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+		valueStr = trim(valueStr);
 		if (isValidValue(valueStr))
 			printResult(date, valueStr);
 	}

@@ -12,10 +12,11 @@ class BitcoinExchange
 	private:
 		std::map<std::string, double> _quotes;
 
-		bool	isValidDate(const std::string& date);
-		bool	isValidValue(const std::string& valueStr);
-		void	printResult(const std::string& date, const std::string& valueStr);
-		void	checkData();
+		bool		isValidDate(const std::string& date);
+		bool		isValidValue(const std::string& valueStr);
+		void		printResult(const std::string& date, const std::string& valueStr);
+		std::string	trim(const std::string& s);
+		void		checkData();
 
 	
 	public:
