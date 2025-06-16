@@ -3,7 +3,7 @@
 BitcoinExchange::BitcoinExchange()
 {
 	// Constructor implementation
-	checkData(); // Load data from the CSV file when an instance is created
+	checkData();
 }
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange& other) : _quotes(other._quotes)
@@ -45,6 +45,15 @@ void BitcoinExchange::checkData()
 	file.close();
 }
 
+std::string trim(const std::string& s)
+{
+	size_t start = s.find_first_not_of(" \t\r\n");
+	size_t end = s.find_last_not_of(" \t\r\n");
+	if (start == std::string::npos || end == std::string::npos)
+		return "";
+	return s.substr(start, end - start + 1);
+}
+
 void	BitcoinExchange::execute(const std::string& filename)
 {
 	std::ifstream file(filename);
@@ -70,8 +79,18 @@ void	BitcoinExchange::execute(const std::string& filename)
 		std::string date;
 		std::string valueStr;
 
-		std::getline(iss, date, '|');
-		std::getline(iss, valueStr, '|');
+		if (line.empty())
+			continue;
+		if (line.find('|') == std::string::npos)
+		{
+			std::cerr << "bad input => " << line << std::endl;
+			continue;
+		}
+		else
+		{
+			std::getline(iss, date, '|');
+			std::getline(iss, valueStr, '|');	
+		}
 		if (!date.empty())
 			date = date.erase(date.length() -1);
 		if (!isValidDate(date))

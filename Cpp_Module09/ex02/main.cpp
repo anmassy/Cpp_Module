@@ -40,23 +40,13 @@ int main(int argc, char** argv)
 		vec.push_back(n);
 		deq.push_back(n);
 	}
-
 	printSequence("Before: ", vec);
-
 	std::vector<int> vecSorted = vec;
 	std::deque<int> deqSorted = deq;
-
 	double timeVec = sortAndMeasure(vecSorted, fordJohnsonSort);
 	double timeDeq = sortAndMeasure(deqSorted, fordJohnsonSort);
-
 	printSequence("After:  ", vecSorted);
-
-	std::cout << "Time to process a range of " << vec.size()
-			  << " elements with std::vector : " << std::fixed << std::setprecision(5)
-			  << timeVec << " us" << std::endl;
-	std::cout << "Time to process a range of " << deq.size()
-			  << " elements with std::deque  : " << std::fixed << std::setprecision(5)
-			  << timeDeq << " us" << std::endl;
-
+	std::cout << "Time to process a range of " << vec.size() << " elements with std::vector : " << std::fixed << std::setprecision(5) << timeVec << " us" << std::endl;
+	std::cout << "Time to process a range of " << deq.size() << " elements with std::deque  : " << std::fixed << std::setprecision(5) << timeDeq << " us" << std::endl;
 	return 0;
 }
