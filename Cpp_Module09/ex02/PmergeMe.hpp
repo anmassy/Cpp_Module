@@ -8,6 +8,8 @@
 #include <ctime>
 #include <iomanip>
 
+
+
 void binaryInsert(std::vector<int>& sorted, int value);
 void fordJohnsonSort(std::vector<int>& arr);
 
