@@ -35,7 +35,7 @@ bool	PmergeMe::parseArgs(int argc, char** argv)
 ///premier container///
 void binaryInsert(std::vector<int>& sorted, int value)
 {
-	auto pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+	std::vector<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
 	sorted.insert(pos, value);
 }
 
@@ -78,15 +78,15 @@ double PmergeMe::sortAndMeasure(std::vector<int>& c, void (*sortFunc)(std::vecto
 void PmergeMe::printSequence(const std::string& label, const std::vector<int>& c)
 {
 	std::cout << label;
-	for (const auto& value : c)
-		std::cout << value << " ";
+	for (std::vector<int>::const_iterator it = c.begin(); it != c.end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 
 ///second container///
 void binaryInsert(std::deque<int>& sorted, int value)
 {
-	auto pos = std::lower_bound(sorted.begin(), sorted.end(), value);
+	std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
 	sorted.insert(pos, value);
 }
 
@@ -129,8 +129,8 @@ double PmergeMe::sortAndMeasure(std::deque<int>& c, void (*sortFunc)(std::deque<
 void PmergeMe::printSequence(const std::string& label, const std::deque<int>& c)
 {
 	std::cout << label;
-	for (const auto& value : c)
-		std::cout << value << " ";
+	for (std::deque<int>::const_iterator it = c.begin(); it != c.end(); it++)
+		std::cout << *it << " ";
 	std::cout << std::endl;
 }
 

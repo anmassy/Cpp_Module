@@ -26,11 +26,13 @@ void BitcoinExchange::checkData()
 	}
 	std::string line;
 	std::getline(file, line);
+
 	while (std::getline(file, line))
 	{
 		std::istringstream iss(line);
 		std::string date;
 		std::string valueStr;
+
 		std::getline(iss, date, ',');
 		std::getline(iss, valueStr, ',');
 		_quotes[date] = std::stod(valueStr);
@@ -74,22 +76,28 @@ void	BitcoinExchange::execute(const std::string& filename)
 
 		if (line.empty())
 			continue;
-		if (line.find('|') == std::string::npos)
+		size_t count = 0;
+		for (size_t i = 0; line[i]; ++i)
 		{
-			std::cerr << "bad input => " << line << std::endl;
+			if (line[i] == '|')
+				count++;
+		}
+		if (count != 1 || line[line.length() - 1] == '|')
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-		else
+		if (count == 1)
 		{
 			std::getline(iss, date, '|');
-			std::getline(iss, valueStr, '|');	
+			std::getline(iss, valueStr, '|');
 		}
 		if (!date.empty())
-			date = date.erase(date.length() -1);
+			date = date.erase(date.length());
 		date = trim(date);
 		if (!isValidDate(date))
 		{
-			std::cerr << "bad input => " << date << std::endl;
+			std::cerr << "Error: bad input => " << date << std::endl;
 			continue;
 		}
 		if(!valueStr.empty())
@@ -122,12 +130,15 @@ void	BitcoinExchange::printResult(const std::string& date, const std::string& va
 
 bool	BitcoinExchange::isValidDate(const std::string& date)
 {
-	if (date.size() != 10 || date[4] != '-' || date[7] != '-')
+	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 		return false;
 
 	int year = std::stoi(date.substr(0, 4));
 	int month = std::stoi(date.substr(5, 2));
 	int day = std::stoi(date.substr(8, 2));
+
+	if (year == 2009 && month == 1 && day < 2)
+		return false;
 
 	if (month < 1 || month > 12 || day < 1 || day > 31)
 		return false;
@@ -146,16 +157,21 @@ bool	BitcoinExchange::isValidDate(const std::string& date)
 
 bool	BitcoinExchange::isValidValue(const std::string& valueStr)
 {
-	double value;
-	std::istringstream iss(valueStr);
-	double tempVal;
-	value = std::stod(valueStr);
-
 	if (valueStr.empty())
 	{
 		std::cerr << "Error: empty value string." << std::endl;
 		return false;
 	}
+	for (size_t i = 0; valueStr[i]; ++i)
+	{
+		if ((!isdigit(valueStr[i]) && valueStr[i] != '.') || valueStr[valueStr.length() - 1] == '.')
+		{
+			std::cerr << "Error: not a positive number." << std::endl;
+			return false;
+		}
+	}
+	double value;
+	value = std::stod(valueStr);
 	if (value < 0)
 	{
 		std::cerr << "Error: not a positive number." << std::endl;

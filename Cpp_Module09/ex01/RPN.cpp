@@ -1,13 +1,8 @@
 #include "RPN.hpp"
 
-RPN::RPN()
-{
-	// Constructor implementation
-}
-RPN::RPN(const RPN& other) : _stack(other._stack)
-{
-	// Copy constructor implementation
-}
+RPN::RPN() {}
+
+RPN::RPN(const RPN& other) : _stack(other._stack) {}
 
 RPN& RPN::operator=(const RPN& other)
 {
@@ -18,10 +13,7 @@ RPN& RPN::operator=(const RPN& other)
 	return *this;
 }
 
-RPN::~RPN()
-{
-	// Destructor implementation
-}
+RPN::~RPN() {}
 
 int RPN::getResult() const
 {
