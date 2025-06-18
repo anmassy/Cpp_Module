@@ -84,6 +84,11 @@ void PmergeMe::printSequence(const std::string& label, const std::vector<int>& c
 }
 
 ///second container///
+void	jacobsthalSort(size_t index)
+{
+
+}
+
 void binaryInsert(std::deque<int>& sorted, int value)
 {
 	std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
@@ -153,6 +158,12 @@ void PmergeMe::execute(int argc, char** argv)
 	double timeVec = sortAndMeasure(_vec, fordJohnsonSort);
 	double timeDeq = sortAndMeasure(_deq, fordJohnsonSort);
 	printSequence("After:  ", _vec);
-	std::cout << "Time to process a range of " << _vec.size() << " elements with std::vector : " << std::fixed << std::setprecision(5) << timeVec << " us" << std::endl;
-	std::cout << "Time to process a range of " << _deq.size() << " elements with std::deque  : " << std::fixed << std::setprecision(5) << timeDeq << " us" << std::endl;
+
+	std::cout << "Time to process a range of " << _vec.size() \
+			  << " elements with std::vector : " << std::fixed \
+			  << std::setprecision(5) << timeVec << " us" << std::endl;
+
+	std::cout << "Time to process a range of " << _deq.size() \
+			  << " elements with std::deque  : " << std::fixed \
+			  << std::setprecision(5) << timeDeq << " us" << std::endl;
 }
