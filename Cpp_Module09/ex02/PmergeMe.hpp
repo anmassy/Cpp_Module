@@ -14,7 +14,7 @@ class PmergeMe
 		std::vector<int> _vec;
 		std::deque<int> _deq;
 
-		void	jacobsthalSort(size_t index);
+		std::vector<size_t>	jacobsthalSort(size_t index);
 
 		double	sortAndMeasure(std::vector<int>& c, void (*sortFunc)(std::vector<int>&));
 		void	printSequence(const std::string& label, const std::vector<int>& c);

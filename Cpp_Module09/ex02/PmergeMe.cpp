@@ -32,6 +32,22 @@ bool	PmergeMe::parseArgs(int argc, char** argv)
 	return true;
 }
 
+std::vector<size_t>	jacobsthalSort(size_t n)
+{
+	std::vector<size_t> index;
+	size_t j0 = 0;
+	size_t j1 = 1;
+
+	while (j1 < n)
+	{
+		index.push_back(j1);
+		size_t next = j1 + 2 * j0;
+		j0 = j1;
+		j1 = next;
+	}
+	return index;
+}
+
 ///premier container///
 void binaryInsert(std::vector<int>& sorted, int value)
 {
@@ -40,7 +56,7 @@ void binaryInsert(std::vector<int>& sorted, int value)
 }
 
 void fordJohnsonSort(std::vector<int>& arr)
-{
+{ 
 	if (arr.size() <= 1)
 		return;
 	std::vector<int> mins;
@@ -62,8 +78,24 @@ void fordJohnsonSort(std::vector<int>& arr)
 	if (i < arr.size())
 		mins.push_back(arr[i]);
 	fordJohnsonSort(mins);
-	for (size_t j = 0; j < maxs.size(); ++j)
-		binaryInsert(mins, maxs[j]);
+	std::vector<size_t> order = jacobsthalSort(maxs.size());
+	std::vector<bool> inserted(maxs.size(), false);
+	for (size_t i = 0; i < order.size(); ++i)
+	{
+		size_t idx = order[i];
+		if (idx < maxs.size() && !inserted[idx])
+		{
+			binaryInsert(mins, maxs[idx]);
+			inserted[idx] = true;
+		}
+	}
+	for (size_t j = 0; j < maxs.size(); ++j) {
+		if (!inserted[j])
+		{
+			binaryInsert(mins, maxs[j]);
+			inserted[j] = true;
+		}
+	}
 	arr = mins;
 }
 
@@ -84,11 +116,6 @@ void PmergeMe::printSequence(const std::string& label, const std::vector<int>& c
 }
 
 ///second container///
-void	jacobsthalSort(size_t index)
-{
-
-}
-
 void binaryInsert(std::deque<int>& sorted, int value)
 {
 	std::deque<int>::iterator pos = std::lower_bound(sorted.begin(), sorted.end(), value);
@@ -118,8 +145,24 @@ void fordJohnsonSort(std::deque<int>& arr)
 	if (i < arr.size())
 		mins.push_back(arr[i]);
 	fordJohnsonSort(mins);
-	for (size_t j = 0; j < maxs.size(); ++j)
-		binaryInsert(mins, maxs[j]);
+	std::vector<size_t> order = jacobsthalSort(maxs.size());
+	std::vector<bool> inserted(maxs.size(), false);
+	for (size_t i = 0; i < order.size(); ++i)
+	{
+		size_t idx = order[i];
+		if (idx < maxs.size() && !inserted[idx])
+		{
+			binaryInsert(mins, maxs[idx]);
+			inserted[idx] = true;
+		}
+	}
+	for (size_t j = 0; j < maxs.size(); ++j) {
+		if (!inserted[j])
+		{
+			binaryInsert(mins, maxs[j]);
+			inserted[j] = true;
+		}
+	}
 	arr = mins;
 }
 
